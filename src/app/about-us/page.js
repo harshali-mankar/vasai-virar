@@ -9,10 +9,7 @@ export async function generateMetadata() {
 export default function AboutUs() {
   return (
     <>
-      <Head>
-        <title>About Us - My Website</title>
-        <meta name="description" content="Learn more about us on this page." />
-      </Head>
+
       <div>
         <h1>About Us</h1>
         <p>This is the About Us page rendered at the top.</p>

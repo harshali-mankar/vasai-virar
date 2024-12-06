@@ -7,8 +7,11 @@ import './globals.css'; // Your global CSS file
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
-  // Utility to check active path
-  const isActive = (path) => pathname === path;
+  // Utility to check active path, including dynamic slugs
+  const isActive = (path) => {
+    // Check if pathname matches the base path or if it starts with the provided path (for dynamic routes like blog posts)
+    return pathname === path || pathname.startsWith(path);
+  };
 
   return (
     <html lang="en">
@@ -38,7 +41,7 @@ export default function RootLayout({ children }) {
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 <li>
                   <h4>Frontend Languages</h4>
-                  <ul style={{ listStyle: 'none', paddingLeft: '1rem' }}>
+                  <ul id="frontendLanguages" style={{ listStyle: 'none', paddingLeft: '1rem' }}>
                     <li>
                       <Link
                         href="/blogs/frontend-languages/javascript"
@@ -93,15 +96,15 @@ export default function RootLayout({ children }) {
                 </li>
                 <li>
                   <h4>Backend</h4>
-                  <ul style={{ listStyle: 'none', paddingLeft: '1rem' }}>
+                  <ul id="backendLanguages"style={{ listStyle: 'none', paddingLeft: '1rem' }}>
                     <li>
                       <Link
-                        href="/blogs/backend"
+                        href="/blogs/backend/nodejs"
                         className={`nav-link ${
-                          isActive('/blogs/backend') ? 'active' : ''
+                          isActive('/blogs/backend/nodejs') ? 'active' : ''
                         }`}
                       >
-                        Backend Topics
+                        Node JS
                       </Link>
                     </li>
                   </ul>
